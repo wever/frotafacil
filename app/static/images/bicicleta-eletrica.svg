@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Bicicleta elétrica</title><desc id="desc">Ilustração vetorial de uma bicicleta elétrica</desc>
+  <rect width="640" height="360" rx="28" fill="#e8f4ef"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="164" cy="260" r="70" stroke="#16352a" stroke-width="15"/><circle cx="478" cy="260" r="70" stroke="#16352a" stroke-width="15"/>
+    <path d="m164 260 114-13 62-98 44 111H278l-67-116h110" stroke="#11775a" stroke-width="16"/>
+    <path d="m340 149 92-15 46 126M418 127h58M197 138h68" stroke="#16352a" stroke-width="13"/>
+    <rect x="265" y="165" width="64" height="70" rx="12" fill="#baf24d" stroke="#11775a" stroke-width="9"/>
+    <path d="m302 177-19 28h18l-13 22 31-32h-18l15-18z" fill="#16352a" stroke="none"/>
+  </g>
+</svg>

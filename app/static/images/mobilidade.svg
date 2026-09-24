@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Mobilidade urbana</title><desc id="desc">Bicicleta e patinete em uma cidade</desc>
+  <rect width="640" height="360" rx="28" fill="#c9f56b"/>
+  <path d="M30 282h580" stroke="#173d25" stroke-width="13" stroke-linecap="round" opacity=".2"/>
+  <path d="M60 282V126h82v156M158 282V78h110v204M284 282V147h92v135M394 282V102h118v180M528 282V163h58v119" fill="#fff" opacity=".42"/>
+  <g fill="none" stroke="#123821" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="149" cy="269" r="47" stroke-width="12"/><circle cx="337" cy="269" r="47" stroke-width="12"/>
+    <path d="m149 269 72-7 43-68 28 75h-71l-42-78h72M264 194l48-8 25 83M171 187h45" stroke-width="12"/>
+    <circle cx="443" cy="274" r="31" stroke-width="11"/><circle cx="558" cy="274" r="31" stroke-width="11"/>
+    <path d="M443 265h82c16 0 25-8 30-22M530 249l-19-105M505 144h49" stroke-width="13"/>
+  </g>
+</svg>

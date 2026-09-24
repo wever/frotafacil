@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Locações — FrotaFácil{% endblock %}
+{% block content %}
+<h1 class="h2 mb-4">Locações</h1>
+<div class="card shadow-sm mb-4"><div class="card-body"><h2 class="h5">Nova locação</h2>
+{% if clientes and equipamentos %}<form method="post" class="row g-3" id="form-locacao"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+<div class="col-md-4"><label class="form-label" for="cliente_id">Cliente</label><select class="form-select" id="cliente_id" name="cliente_id" required>{% for item in clientes %}<option value="{{ item.id }}">{{ item.nome }}</option>{% endfor %}</select></div>
+<div class="col-md-4"><label class="form-label" for="equipamento_id">Produto</label><select class="form-select" id="equipamento_id" name="equipamento_id" required>{% for item in equipamentos %}<option value="{{ item.id }}" data-diaria="{{ item.valor_diaria }}">{{ item.codigo }} — {{ item.descricao }}</option>{% endfor %}</select></div>
+<div class="col-md-2"><label class="form-label" for="data_retirada">Retirada</label><input class="form-control" id="data_retirada" name="data_retirada" type="date" value="{{ hoje }}" required></div>
+<div class="col-md-2"><label class="form-label" for="data_prevista">Devolução prevista</label><input class="form-control" id="data_prevista" name="data_prevista" type="date" value="{{ hoje }}" required></div>
+<div class="col-12 d-flex align-items-center gap-3"><button class="btn btn-primary">Registrar locação</button><output id="estimativa" class="fw-semibold" aria-live="polite"></output></div>
+</form>{% else %}<div class="alert alert-info mb-0">Cadastre ao menos um cliente e um produto disponível antes de criar uma locação.</div>{% endif %}</div></div>
+<div class="card shadow-sm"><div class="table-responsive"><table class="table table-hover align-middle mb-0"><thead><tr><th>Cliente</th><th>Equipamento</th><th>Período</th><th>Total</th><th>Status</th><th><span class="visually-hidden">Ações</span></th></tr></thead><tbody>
+{% for item in locacoes %}<tr><td>{{ item.cliente.nome }}</td><td>{{ item.equipamento.codigo }}</td><td>{{ item.data_retirada.strftime('%d/%m/%Y') }} a {{ item.data_prevista.strftime('%d/%m/%Y') }}</td><td>{{ item.valor_total|moeda }}</td><td><span class="badge text-bg-{{ 'danger' if item.atrasada else ('success' if item.status == 'encerrada' else 'primary') }}">{{ 'atrasada' if item.atrasada else item.status }}</span></td><td>{% if item.status == 'ativa' %}<form method="post" action="{{ url_for('main.devolver', locacao_id=item.id) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="btn btn-outline-success btn-sm">Registrar devolução</button></form>{% endif %}</td></tr>{% else %}<tr><td colspan="6" class="text-center text-secondary py-4">Nenhuma locação registrada.</td></tr>{% endfor %}
+</tbody></table></div></div>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/locacoes.js') }}"></script>{% endblock %}

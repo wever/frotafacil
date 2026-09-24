@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Clientes — FrotaFácil{% endblock %}
+{% block content %}
+<h1 class="h2 mb-4">Clientes</h1>
+<div class="row g-4"><div class="col-lg-4"><div class="card shadow-sm"><div class="card-body"><h2 class="h5">Novo cliente</h2><form method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+<div class="mb-3"><label class="form-label" for="nome">Nome</label><input class="form-control" id="nome" name="nome" required></div>
+<div class="mb-3"><label class="form-label" for="documento">CPF</label><input class="form-control" id="documento" name="documento" inputmode="numeric" placeholder="000.000.000-00" required></div>
+<div class="mb-3"><label class="form-label" for="telefone">Telefone</label><input class="form-control" id="telefone" name="telefone" required></div>
+<button class="btn btn-primary">Cadastrar</button></form></div></div></div>
+<div class="col-lg-8"><div class="card shadow-sm"><div class="table-responsive"><table class="table table-hover mb-0"><thead><tr><th>Nome</th><th>Documento</th><th>Telefone</th></tr></thead><tbody>{% for item in clientes %}<tr><td>{{ item.nome }}</td><td>{{ item.documento }}</td><td>{{ item.telefone }}</td></tr>{% else %}<tr><td colspan="3" class="text-center text-secondary py-4">Nenhum cliente cadastrado.</td></tr>{% endfor %}</tbody></table></div></div></div></div>
+{% endblock %}

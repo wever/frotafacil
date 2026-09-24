@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Produtos — FrotaFácil{% endblock %}
+{% block content %}
+<div class="mb-4"><h1 class="h2 mb-1">Produtos de mobilidade</h1><p class="text-secondary mb-0">Patinetes e bicicletas disponíveis para locação por pessoas físicas.</p></div>
+<div class="row g-4"><div class="col-lg-4"><div class="card shadow-sm"><div class="card-body"><h2 class="h5">Novo produto</h2><form method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+<div class="mb-3"><label class="form-label" for="codigo">Código</label><input class="form-control" id="codigo" name="codigo" required></div>
+<div class="mb-3"><label class="form-label" for="descricao">Descrição</label><input class="form-control" id="descricao" name="descricao" required></div>
+<div class="mb-3"><label class="form-label" for="valor_diaria">Diária (R$)</label><input class="form-control" id="valor_diaria" name="valor_diaria" type="number" min="0.01" step="0.01" required></div>
+<div class="mb-3"><label class="form-label" for="status">Situação</label><select class="form-select" id="status" name="status"><option value="disponivel">Disponível</option><option value="manutencao">Em manutenção</option></select></div>
+<button class="btn btn-primary">Cadastrar</button></form></div></div></div>
+<div class="col-lg-8"><div class="row g-3">{% for item in equipamentos %}<div class="col-md-6"><article class="card product-card shadow-sm h-100"><img src="{{ url_for('static', filename=item.codigo|imagem_produto) }}" class="card-img-top product-image" alt="Ilustração de {{ item.descricao }}"><div class="card-body"><div class="d-flex justify-content-between gap-2"><div><span class="small text-secondary">{{ item.codigo }}</span><h2 class="h5 mb-1">{{ item.descricao }}</h2></div><span class="badge product-status text-bg-{{ {'disponivel':'success','alugado':'primary','manutencao':'warning'}[item.status] }}">{{ item.status }}</span></div><p class="price mb-0">{{ item.valor_diaria|moeda }} <small>/ dia</small></p></div></article></div>{% else %}<div class="col-12"><div class="card"><div class="card-body text-center text-secondary">Nenhum produto cadastrado.</div></div></div>{% endfor %}</div></div></div>
+{% endblock %}

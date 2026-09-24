@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Bicicleta urbana</title><desc id="desc">Ilustração vetorial de uma bicicleta urbana verde com cesta</desc>
+  <rect width="640" height="360" rx="28" fill="#eef7e8"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="170" cy="258" r="70" stroke="#183326" stroke-width="15"/><circle cx="474" cy="258" r="70" stroke="#183326" stroke-width="15"/>
+    <path d="m170 258 105-10 66-100 40 110H275l-63-112h106" stroke="#1b7841" stroke-width="15"/>
+    <path d="m341 148 91-13 42 123M420 128h46" stroke="#183326" stroke-width="13"/>
+    <path d="M197 140h63" stroke="#183326" stroke-width="14"/>
+    <circle cx="275" cy="248" r="20" stroke="#baf24d" stroke-width="12"/>
+    <path d="M449 151h78l-12 62h-57z" fill="#baf24d" stroke="#1b7841" stroke-width="8"/>
+  </g>
+</svg>

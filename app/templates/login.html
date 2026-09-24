@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Entrar — FrotaFácil{% endblock %}
+{% block content %}
+<div class="login-card card shadow-sm mx-auto mt-5">
+  <div class="card-body p-4">
+    <h1 class="h3 mb-1">FrotaFácil</h1>
+    <p class="text-secondary mb-4">Bicicletas e patinetes para mobilidade urbana</p>
+    <form method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <div class="mb-3"><label for="email" class="form-label">E-mail</label><input id="email" name="email" type="email" class="form-control" required autofocus></div>
+      <div class="mb-3"><label for="senha" class="form-label">Senha</label><input id="senha" name="senha" type="password" class="form-control" required></div>
+      <button class="btn btn-primary w-100">Entrar</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

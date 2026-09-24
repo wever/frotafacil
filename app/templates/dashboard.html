@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Painel — FrotaFácil{% endblock %}
+{% block content %}
+<section class="hero-panel mb-4"><div><span class="eyebrow">Mobilidade simples</span><h1 class="display-6 fw-bold mb-2">Alugue, pedale e siga.</h1><p class="mb-0">Controle de bicicletas e patinetes para locações rápidas e acessíveis.</p></div><img src="{{ url_for('static', filename='images/mobilidade.svg') }}" alt="Bicicleta e patinete representando mobilidade urbana"></section>
+<div class="d-flex justify-content-between align-items-center mb-3"><div><h2 class="h3 mb-1">Visão geral</h2><p class="text-secondary mb-0">Situação atual dos produtos</p></div><a class="btn btn-primary" href="{{ url_for('main.locacoes') }}">Nova locação</a></div>
+<div class="row g-3 mb-4">
+  {% for rotulo, valor, cor in [('Disponíveis', dados.disponiveis, 'success'), ('Alugados', dados.alugados, 'primary'), ('Em manutenção', dados.manutencao, 'warning'), ('Devoluções atrasadas', dados.atrasadas, 'danger')] %}
+  <div class="col-6 col-lg-3"><div class="card h-100 border-{{ cor }}"><div class="card-body"><div class="text-secondary">{{ rotulo }}</div><div class="display-6 fw-semibold">{{ valor }}</div></div></div></div>
+  {% endfor %}
+</div>
+<div class="card shadow-sm">
+  <div class="card-header bg-white d-flex justify-content-between"><strong>Locações recentes</strong><span>Receita prevista: <strong>{{ receita|moeda }}</strong></span></div>
+  <div class="table-responsive"><table class="table table-hover mb-0"><thead><tr><th>Cliente</th><th>Equipamento</th><th>Previsão</th><th>Status</th></tr></thead><tbody>
+  {% for item in ultimas %}<tr><td>{{ item.cliente.nome }}</td><td>{{ item.equipamento.codigo }}</td><td>{{ item.data_prevista.strftime('%d/%m/%Y') }}</td><td><span class="badge text-bg-{{ 'danger' if item.atrasada else ('success' if item.status == 'encerrada' else 'primary') }}">{{ 'atrasada' if item.atrasada else item.status }}</span></td></tr>{% else %}<tr><td colspan="4" class="text-center text-secondary py-4">Nenhuma locação registrada.</td></tr>{% endfor %}
+  </tbody></table></div>
+</div>
+{% endblock %}
